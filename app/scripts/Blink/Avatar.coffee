@@ -1,5 +1,6 @@
 class Avatar
-  MOVE_SPEED: 0.03
+  MOVE_SPEED: 2
+  BLINK_DISTANCE: 0.2
 
   WIDTH: 60
   HEIGHT: 90
@@ -18,7 +19,7 @@ class Avatar
 
     @sprite = new PIXI.Sprite(@texture)
     @sprite.anchor.x = 0
-    @sprite.anchor.y = 1
+    @sprite.anchor.y = 2.5
 
   setLocation: (x, y) ->
     point = Coordinates::ddToAvatar(x, y)

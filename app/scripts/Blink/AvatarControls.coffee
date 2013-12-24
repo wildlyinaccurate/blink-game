@@ -16,13 +16,13 @@ class AvatarControls
     sprite.position.y = point.y
 
   moveUp: =>
-    @move(0, @avatar.MOVE_SPEED)
+    @move(-@avatar.MOVE_SPEED, -@avatar.MOVE_SPEED)
 
   moveDown: =>
-    @move(0, -@avatar.MOVE_SPEED)
+    @move(@avatar.MOVE_SPEED, @avatar.MOVE_SPEED)
 
   moveLeft: =>
-    @move(@avatar.MOVE_SPEED, 0)
+    @move(-@avatar.MOVE_SPEED, @avatar.MOVE_SPEED)
 
   moveRight: =>
-    @move(-@avatar.MOVE_SPEED, 0)
+    @move(@avatar.MOVE_SPEED, -@avatar.MOVE_SPEED)
