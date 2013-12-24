@@ -1,13 +1,18 @@
 class Map
-  constructor: (@graphics) ->
+  WIDTH: 0
+  HEIGHT: 0
 
-  draw: (terrain, xOffset) ->
+  constructor: (@graphics, @terrain) ->
+    Map::WIDTH = @terrain[0].length * Tile::WIDTH
+    Map::HEIGHT = @terrain.length * Tile::HEIGHT
+
+  draw: (xOffset) ->
     i = 0
-    tL = terrain.length
+    tL = @terrain.length
 
     while i < tL
       j = 0
-      row = terrain[i]
+      row = @terrain[i]
       rL = row.length
 
       while j < rL
@@ -18,10 +23,9 @@ class Map
         y = i * tile.HEIGHT
 
         # Isometric co-ordinate
-        isoX = x - y
-        isoY = (x + y) / 2
+        iso = Coordinates::ddToIso(x, y)
 
-        tile.render(@graphics, xOffset + isoX, isoY)
+        tile.render(@graphics, xOffset + iso.x, iso.y)
 
         j++
 

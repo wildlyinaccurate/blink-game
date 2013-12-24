@@ -1,4 +1,5 @@
 class Tile
+  THICKNESS: 1
   WIDTH: 60
   HEIGHT: 60
   HEIGHT_2: Tile::HEIGHT / 2
