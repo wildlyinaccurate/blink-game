@@ -8,12 +8,12 @@ class Avatar
   X_OFFSET: Avatar::WIDTH / 2
   Y_OFFSET: Avatar::HEIGHT / 2
 
-  TEXTURE_PATH = '/images/wizard.png'
+  SPRITE_JSON_PATH: 'images/wizard.json'
 
   constructor: ->
     frame = new PIXI.Rectangle(0, 0, @WIDTH, @HEIGHT)
 
-    @texture = new PIXI.Texture.fromImage(TEXTURE_PATH)
+    @texture = new PIXI.Texture.fromFrame('standing.png')
     @texture.setFrame(frame)
     @texture.noFrame = false
 
