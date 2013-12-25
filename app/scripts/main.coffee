@@ -16,12 +16,10 @@ animate = ->
 
 createMovieClip = (textures) ->
   clip = new PIXI.MovieClip(textures)
-  clip.animationSpeed = 0.03
   clip.position.x = STAGE_WIDTH / 2
   clip.position.y = 100
   clip.anchor.x = 0.5
   clip.anchor.y = 0.5
-  clip.play()
 
   clip
 
@@ -31,11 +29,13 @@ loader.onComplete = ->
   idleTextures = []
   idleTextures.push(PIXI.Texture.fromFrame("sanji-standing-right-#{i}.png")) for i in [1..2]
   idleClip = createMovieClip(idleTextures)
+  idleClip.animationSpeed = 0.03
   sanji.addNamedChild(idleClip, 'idleRight')
 
   runningRightTextures = []
-  runningRightTextures.push(PIXI.Texture.fromFrame("sanji-running-right-#{i}.png")) for i in [1..1]
+  runningRightTextures.push(PIXI.Texture.fromFrame("sanji-running-right-#{i}.png")) for i in [1..8]
   sanji.addNamedChild(createMovieClip(runningRightTextures), 'runningRight')
+  sanji.getNamedChild('runningRight').animationSpeed = 0.26
 
   sanji.setActive('idleRight')
   stage.addChild(sanji)
@@ -44,7 +44,7 @@ loader.onComplete = ->
 
 loader.load()
 
-kd.RIGHT.down ->
+kd.RIGHT.press ->
   sanji.setActive('runningRight')
 
 kd.RIGHT.up ->
