@@ -57,14 +57,20 @@ loader.onComplete = ->
 
 loader.load()
 
+# Keep track of whether the character is moving to prevent weird behaviour
+# when pressing keys rapidly
+activeKey = null
+
 kd.RIGHT.press ->
+  activeKey = kd.RIGHT
   sanji.setActive('runningRight')
 
 kd.RIGHT.up ->
-  sanji.setActive('idleRight')
+  sanji.setActive('idleRight') if activeKey is kd.RIGHT
 
 kd.LEFT.press ->
+  activeKey = kd.LEFT
   sanji.setActive('runningLeft')
 
 kd.LEFT.up ->
-  sanji.setActive('idleLeft')
+  sanji.setActive('idleLeft') if activeKey is kd.LEFT
